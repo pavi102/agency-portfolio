@@ -3,8 +3,10 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const helmet = require("helmet")
 const authRouter = require('./routes/auth');
-const dbInit = require('./database')();
 const app = express();
+// Initialise Database
+require('./database')();
+
 
 // Add middleware
 app.use(helmet());
