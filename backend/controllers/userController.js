@@ -1,31 +1,41 @@
-const { body } = require('express-validator');
-let User = require('../models/user');
-
-let async = require('async');
+const User = require('../models/user'),
+    async = require('async');
 
 exports.login = function (req, res) {
-
+    let search;
+    if(req.body.user.includes("@"))
+        search = {email: req.body.user};
+    else
+        search = {username: req.body.user};
+    User.findOne(search, function (err, user){
+        if (err) {
+            console.error(err)
+            return res.status(500).send(err);
+        }
+        user.comparePassword(req.body.password, function (err, isMatch){
+            if (err){
+                console.error(err)
+                return res.status(500).send(err)
+            }
+            res.status(200).send({message: "user successfully authenticated"});
+        });
+    })
 }
 
-exports.register = [
-    body('username').trim().escape(),
-    body('password').trim().escape(),
-    body('email').trim().escape(),
-    function (req, res){
-        let user = new User({
-            username: req.body.username,
-            password: req.body.password,
-            email: req.body.email,
-        })
-        user.save(function (err) {
-            if (err){
-                console.log(err)
-                return res.status(400).send(err);
-            }
-            res.status(200).send({message: "user successfully created"});
-        })
-    },
-]
+exports.register = function (req, res){
+    let user = new User({
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email,
+    })
+    user.save(function (err) {
+        if (err){
+            console.log(err)
+            return res.status(400).send(err);
+        }
+        res.status(200).send({message: "user successfully created"});
+    })
+}
 
 // exports.index = function(req, res) {
 //

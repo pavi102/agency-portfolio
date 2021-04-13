@@ -1,12 +1,12 @@
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const helmet = require("helmet")
-const authRouter = require('./routes/auth');
-const app = express();
+const express = require('express'),
+    cookieParser = require('cookie-parser'),
+    logger = require('morgan'),
+    helmet = require("helmet"),
+    authRouter = require('./routes/auth'),
+    app = express();
+
 // Initialise Database
 require('./database')();
-
 
 // Add middleware
 app.use(helmet());
@@ -15,6 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+// Add Routes
 app.get("/", function (req, res){
   res.json({message: 'successful ping'})
 })
