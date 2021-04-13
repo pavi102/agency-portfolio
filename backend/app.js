@@ -1,43 +1,26 @@
-let createError = require('http-errors');
-let express = require('express');
-let path = require('path');
-let cookieParser = require('cookie-parser');
-let logger = require('morgan');
-let compression = require("compression")
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const helmet = require("helmet")
+const authRouter = require('./routes/auth');
+const dbInit = require('./database')();
+const app = express();
 
-let indexRouter = require('./routes/index');
-let usersRouter = require('./routes/users');
-let catalogRouter = require('./routes/catalog');  //Import routes for "catalog" area of site
-
-let app = express();
-
+// Add middleware
 app.use(helmet());
-
-let mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://root:128Uwu8MAAQpyo1T@cluster0.me1nh.mongodb.net/local_library?retryWrites=true&w=majority', { useNewUrlParser: true , useUnifiedTopology: true});
-let db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(compression());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/catalog', catalogRouter);  // Add catalog routes to middleware chain.
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+app.get("/", function (req, res){
+  res.json({message: 'successful ping'})
+})
+app.use('/auth', authRouter);
+app.get("*", ((req, res) => {
+  res.status(404).send("Endpoint does not exist")
+}))
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -47,7 +30,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.send(err.toString())
 });
 
-module.exports = app;
+app.listen(3000);
