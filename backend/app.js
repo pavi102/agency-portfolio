@@ -2,18 +2,25 @@ const express = require('express'),
     cookieParser = require('cookie-parser'),
     logger = require('morgan'),
     helmet = require("helmet"),
+    passport = require("passport"),
+    cors = require("cors"),
     authRouter = require('./routes/auth'),
     app = express();
 
 // Initialise Database
-require('./database')();
+require('./utils/database')();
 
 // Add middleware
+app.use(cors());
 app.use(helmet());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(passport.initialize());
+
+// Add passport strategies
+require("./utils/passport")(passport);
 
 // Add Routes
 app.get("/", function (req, res){
@@ -21,8 +28,8 @@ app.get("/", function (req, res){
 })
 app.use('/auth', authRouter);
 app.get("*", ((req, res) => {
-  res.status(404).send("Endpoint does not exist")
-}))
+  res.status(404).send("Endpoint does not exist");
+}));
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -32,7 +39,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.send(err.toString())
+  res.send(err.toString());
 });
 
 // TODO: Make port come from env
