@@ -10,6 +10,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { dispatch, getState, LOGIN } from '../utils/redux-store';
+import {useSelector} from 'react-redux'; 
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -46,8 +48,8 @@ export default function Login() {
             },
             body: JSON.stringify({user, password})
         }).then(res => res.json()).then(json => {
-            sessionStorage.setItem("jwt", json.token);
-            sessionStorage.setItem("user", json.user);
+            dispatch({type:LOGIN, data:{jwt:json.token, user:json.user}});
+            console.log(getState());
         });
     }
 

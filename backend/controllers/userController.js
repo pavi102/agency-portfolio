@@ -31,7 +31,7 @@ exports.login = function (req, res) {
                             console.error(err);
                             return res.status(500).send(err);
                         }
-                        res.json({message: "Successfully authenticated", token: "Bearer " + token, user: user.name});
+                        res.json({message: "Successfully authenticated", token: "Bearer " + token, user: user.username});
                     }
                 );
             }
