@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  express:
+    environment:
+      - NODE_ENV=dev
+      - JWT_SECRET=a5TznyWtna
+      - MONGO_DB_URI=mongodb+srv://admin:NOtIfhRE0QNoHae6@agency-portfolio.2ttf6.mongodb.net/portfolio?retryWrites=true&w=majority
+    image:
+      express
+    ports:
+      - "3001"
+  react:
+    environment:
+      - NODE_ENV=dev
+      - BACKEND_URL=http://localhost:3001
+    image: react
+    ports:
+      - "3000"
+    depends_on:
+      - express
+#     TODO: ADD nginx container and configure to run servers

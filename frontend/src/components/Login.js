@@ -40,8 +40,8 @@ export default function Login() {
 
     function onLogin(e) {
         e.preventDefault();
-        // TODO: Get link from env variables
-        fetch("http://localhost:3001/auth/login", {
+        let url = process.env.BACKEND_URL || "http://localhost:3001"
+        fetch(url+"/auth/login", {
             method: "post",
             headers: {
                 'Content-Type': "application/json"
@@ -49,7 +49,6 @@ export default function Login() {
             body: JSON.stringify({user, password})
         }).then(res => res.json()).then(json => {
             dispatch({type:LOGIN, data:{jwt:json.token, user:json.user}});
-            console.log(getState());
         });
     }
 

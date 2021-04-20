@@ -4,8 +4,7 @@ const JwtStrategy = require("passport-jwt").Strategy,
 
 let opts = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-    // TODO: Change to get from env variables
-    secretOrKey: "secret"
+    secretOrKey: process.env.JWT_SECRET
 };
 // Passport auth strategy. This will decode the JWT, check for the user, make sure it exists, then authenticate the request if it does.
 module.exports = passport => {

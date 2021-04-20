@@ -3,7 +3,6 @@ const mongoose = require('mongoose'),
     bcrypt = require('bcrypt'),
     SALT = 10;
 
-// Todo: Add password hashing
 const UserSchema = new Schema(
     {
         username: {

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "SET NODE_ENV=dev & SET JWT_SECRET=secret & SET MONGO_DB_URI=mongodb+srv://admin:NOtIfhRE0QNoHae6@agency-portfolio.2ttf6.mongodb.net/portfolio?retryWrites=true&w=majority & node app.js"
   },
   "dependencies": {
     "async": "^3.2.0",

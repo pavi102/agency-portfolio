@@ -21,8 +21,7 @@ exports.login = function (req, res) {
             }
             if(isMatch){
                 const payload = {id: user.id, name: user.name};
-                // TODO: Get secret from env
-                jwt.sign(payload, "secret",
+                jwt.sign(payload, process.env.JWT_SECRET,
                     {
                         expiresIn: 2592000 // 1 month in seconds
                     },
