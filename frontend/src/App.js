@@ -6,12 +6,13 @@ import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import Footer from "./components/Footer";
 
+
 function App() {
     return (
         <>
             <Navbar />
             <Switch>
-                <Route path='/' component={Home} />
+                <Route path='/' component={Home} exact />
                 <Route path='/login' component={Login} />
                 <Route path='/register' component={Register} />
             </Switch>
