@@ -2,6 +2,7 @@ import React from 'react'
 import Banner from "../components/Banner";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
+import ProjectPreview from "../components/ProjectPreview";
 
 function Home() {
     return (
@@ -10,6 +11,7 @@ function Home() {
                 4Pears
             </Typography>
             <Banner/>
+            <ProjectPreview/>
         </Container>
     );
 }
