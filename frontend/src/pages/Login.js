@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -8,10 +8,10 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { dispatch, getState, LOGIN } from '../utils/redux-store';
-import {useSelector} from 'react-redux'; 
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -41,20 +41,20 @@ export default function Login() {
     function onLogin(e) {
         e.preventDefault();
         let url = process.env.BACKEND_URL || "http://localhost:3001"
-        fetch(url+"/auth/login", {
+        fetch(url + "/auth/login", {
             method: "post",
             headers: {
                 'Content-Type': "application/json"
             },
-            body: JSON.stringify({user, password})
+            body: JSON.stringify({ user, password })
         }).then(res => res.json()).then(json => {
-            dispatch({type:LOGIN, data:{jwt:json.token, user:json.user}});
+            dispatch({ type: LOGIN, data: { jwt: json.token, user: json.user } });
         });
     }
 
     return (
         <Container component="main" maxWidth="xs">
-            <CssBaseline/>
+            <CssBaseline />
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
                 </Avatar>
@@ -87,7 +87,7 @@ export default function Login() {
                         onChange={e => setPassword(e.target.value)}
                     />
                     <FormControlLabel
-                        control={<Checkbox value="remember" color="primary"/>}
+                        control={<Checkbox value="remember" color="primary" />}
                         label="Remember me"
                     />
                     <Button
