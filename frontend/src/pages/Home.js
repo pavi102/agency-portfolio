@@ -6,13 +6,15 @@ import ProjectPreview from "../components/ProjectPreview";
 
 function Home() {
     return (
-        <Container>
-            <Typography align={'center'} variant={'h1'} style={{color: "#8f9a27"}}>
-                4Pears
-            </Typography>
-            <Banner/>
-            <ProjectPreview/>
-        </Container>
+        <>
+            <Container>
+                <Typography align={'center'} variant={'h1'} style={{ color: "#8f9a27" }}>
+                    4Pears
+                </Typography>
+                <Banner />
+                <ProjectPreview/>
+            </Container>
+        </>
     );
 }
 
