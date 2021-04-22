@@ -8,6 +8,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import {makeStyles} from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
+import {Launch} from "@material-ui/icons";
 
 function ProjectPreview() {
     let classes = makeStyles({
@@ -81,7 +82,15 @@ function ProjectPreview() {
                     )
                 })}
             </Grid>
-            <Button onClick={() => window.location.href = "/projects"}>See More Projects</Button>
+            <Grid container justify={"center"}>
+            <Button
+                variant={"outlined"}
+                size={"large"}
+                endIcon={<Launch/>}
+                onClick={() => window.location.href = "/projects"}>
+                See More Projects
+            </Button>
+            </Grid>
         </Container>
     );
 }

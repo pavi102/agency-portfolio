@@ -3,6 +3,7 @@ import Banner from "../components/Banner";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import ProjectPreview from "../components/ProjectPreview";
+import ContactForm from "../components/ContactForm";
 
 function Home() {
     return (
@@ -13,6 +14,7 @@ function Home() {
                 </Typography>
                 <Banner />
                 <ProjectPreview/>
+                <ContactForm/>
             </Container>
         </>
     );
