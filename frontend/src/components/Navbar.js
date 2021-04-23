@@ -5,7 +5,7 @@ import '../styling/style.css'
 function Navbar() {
     return (
         <div>
-            <ul>
+            <ul className="NavbarList">
                 <li>
                     <Link to="/">Home</Link>
                 </li>

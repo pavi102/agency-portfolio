@@ -1,11 +1,9 @@
 import React from 'react';
-import {makeStyles} from "@material-ui/core/styles";
-import {Launch} from "@material-ui/icons";
-import { useHistory } from 'react-router-dom';
-import {Container, Grid, Card, CardActionArea, CardMedia, CardContent, Typography, Button} from "@material-ui/core";
+import { makeStyles } from '@material-ui/core/styles';
+import { Container, Grid, Card, CardActionArea, CardMedia, CardContent, Typography } from '@material-ui/core';
 
-function ProjectPreview() {
-    const history = useHistory();
+
+function ProjectList() {
     let classes = makeStyles({
         custom: {
             border: "none",
@@ -13,10 +11,14 @@ function ProjectPreview() {
             padding: "2%"
         },
         image: {
-            height: 256
+            height: 400
         },
         grid: {
             display: 'flex'
+        },
+        title: {
+            backgroundColor: "#333",
+            color: "white"
         }
     })();
 
@@ -46,16 +48,12 @@ function ProjectPreview() {
             "SAMPLE DESCRIPTION. SAMPLE DESCRIPTION. SAMPLE DESCRIPTION. SAMPLE DESCRIPTION. "
     }
     ];
-
     return (
         <Container maxWidth={"lg"}>
-            <Typography align={'center'} variant={'h2'}>
-                Our recent Works
-            </Typography>
-            <Grid container spacing={5} className={classes.grid}>
+            <Grid container className={classes.grid} cols={1}>
                 {projectList.map(project => {
                     return (
-                        <Grid item sm={12} md={6}>
+                        <Grid item xs={12}>
                             <Card className={classes.custom}>
                                 <CardActionArea>
                                     <CardMedia
@@ -63,12 +61,9 @@ function ProjectPreview() {
                                         image={project.previewImage}
                                         title={project.title}
                                     />
-                                    <CardContent>
+                                    <CardContent className={classes.title}>
                                         <Typography gutterBottom variant="h5" component="h2">
                                             {project.title}
-                                        </Typography>
-                                        <Typography variant="body2" color="textSecondary" component="p">
-                                            {project.description}
                                         </Typography>
                                     </CardContent>
                                 </CardActionArea>
@@ -77,17 +72,8 @@ function ProjectPreview() {
                     )
                 })}
             </Grid>
-            <Grid container justify={"center"}>
-            <Button
-                variant={"outlined"}
-                size={"large"}
-                endIcon={<Launch/>}
-                onClick={() => history.push('/projects')}>
-                See More Projects
-            </Button>
-            </Grid>
         </Container>
-    );
+    )
 }
 
-export default ProjectPreview;
+export default ProjectList
