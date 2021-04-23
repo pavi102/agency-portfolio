@@ -1,5 +1,6 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import {createMuiTheme} from '@material-ui/core/styles';
 import {grey} from "@material-ui/core/colors";
+import {makeStyles} from "@material-ui/core";
 
 export const theme = createMuiTheme({
     palette: {
@@ -14,4 +15,23 @@ export const theme = createMuiTheme({
             contrastText: '#000',
         },
     },
+    typography: {
+        title: {
+            fontFamily: "Anton",
+            fontSize: 24
+        },
+        subtitle1: {
+            fontFamily: "Rambla",
+            fontSize: 12
+        },
+        body1: {
+            fontFamily: "Taviraj",
+            fontSize: 12
+        }
+
+    }
 });
+
+export const bannerStyle = makeStyles({
+
+})
