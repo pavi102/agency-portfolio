@@ -5,15 +5,17 @@ import Register from './pages/Register'
 import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import Footer from "./components/Footer";
+import ProjectList from "./components/ProjectList"
 
 function App() {
     return (
         <>
             <Navbar />
             <Switch>
-                <Route path='/' component={Home} />
+                <Route path='/' component={Home} exact />
                 <Route path='/login' component={Login} />
                 <Route path='/register' component={Register} />
+                <Route path='/projects' component={ProjectList} />
             </Switch>
             <Footer />
         </>

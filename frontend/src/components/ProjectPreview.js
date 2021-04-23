@@ -9,8 +9,10 @@ import {makeStyles} from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import {Launch} from "@material-ui/icons";
+import { useHistory } from 'react-router-dom';
 
 function ProjectPreview() {
+    const history = useHistory();
     let classes = makeStyles({
         custom: {
             border: "none",
@@ -87,7 +89,7 @@ function ProjectPreview() {
                 variant={"outlined"}
                 size={"large"}
                 endIcon={<Launch/>}
-                onClick={() => window.location.href = "/projects"}>
+                onClick={() => history.push('/projects')}>
                 See More Projects
             </Button>
             </Grid>
