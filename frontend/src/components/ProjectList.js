@@ -1,22 +1,28 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import Container from "@material-ui/core/Container";
-import ButtonBase from '@material-ui/core/ButtonBase';
+import { Container, Grid, Card, CardActionArea, CardMedia, CardContent, Typography } from '@material-ui/core';
 
 
 function ProjectList() {
     let classes = makeStyles({
-        root: {
-            display: 'flex',
-            flexWrap: 'wrap',
-            overflow: 'hidden'
+        custom: {
+            border: "none",
+            boxShadow: "none",
+            padding: "2%"
+        },
+        image: {
+            height: 400
+        },
+        grid: {
+            display: 'flex'
+        },
+        title: {
+            backgroundColor: "#333",
+            color: "white"
         }
     })();
 
-    let projects = [{
+    let projectList = [{
         title: "Project Sample 1",
         previewImage: "https://liquidplanner-wpengine.netdna-ssl.com/wp-content/uploads/2019/04/HiRes-17.jpg",
         description: "SAMPLE DESCRIPTION. SAMPLE DESCRIPTION. SAMPLE DESCRIPTION. SAMPLE DESCRIPTION. " +
@@ -42,27 +48,30 @@ function ProjectList() {
             "SAMPLE DESCRIPTION. SAMPLE DESCRIPTION. SAMPLE DESCRIPTION. SAMPLE DESCRIPTION. "
     }
     ];
-
     return (
-        <Container className={classes.root}>
-            <GridList cellHeight={400} cols={1} spacing={25}>
-                {
-                    projects.map((project) => (
-                        <GridListTile key={project.previewImage}>
-                            <ButtonBase focusRipple>
-
-                                <img src={project.previewImage} alt={project.title} />
-                                <GridListTileBar
-                                    title={project.title}
-                                    titlePosition="center"
-                                />
-                            </ButtonBase>
-
-                        </GridListTile>
-
-                    ))
-                }
-            </GridList>
+        <Container maxWidth={"lg"}>
+            <Grid container className={classes.grid} cols={1}>
+                {projectList.map(project => {
+                    return (
+                        <Grid item xs={12}>
+                            <Card className={classes.custom}>
+                                <CardActionArea>
+                                    <CardMedia
+                                        className={classes.image}
+                                        image={project.previewImage}
+                                        title={project.title}
+                                    />
+                                    <CardContent className={classes.title}>
+                                        <Typography gutterBottom variant="h5" component="h2">
+                                            {project.title}
+                                        </Typography>
+                                    </CardContent>
+                                </CardActionArea>
+                            </Card>
+                        </Grid>
+                    )
+                })}
+            </Grid>
         </Container>
     )
 }
