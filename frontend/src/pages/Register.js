@@ -1,12 +1,6 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import {makeStyles} from '@material-ui/core/styles';
+import {Avatar, Button, Container, CssBaseline, Typography, TextField} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -33,13 +27,13 @@ export default function Register() {
 
     return (
         <Container component="main" maxWidth="xs">
-            <CssBaseline />
+            <CssBaseline/>
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
                 </Avatar>
                 <Typography component="h1" variant="h5">
                     Register
-        </Typography>
+                </Typography>
                 <form className={classes.form} noValidate>
                     <TextField
                         variant="outlined"
@@ -82,7 +76,7 @@ export default function Register() {
                         className={classes.submit}
                     >
                         Register
-          </Button>
+                    </Button>
                 </form>
             </div>
         </Container>
