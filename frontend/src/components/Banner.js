@@ -31,17 +31,25 @@ function Banner() {
         custom: {
             border: "none",
             boxShadow: "none",
-            maxWidth: 345
+            maxWidth: 345,
         },
         image: {
             height: 128
+        },
+        bannerText: {
+            "&::selection": {
+                backgroundColor:"red"
+            }
         }
     });
 
     const classes = useStyles();
     return (
         <>
-            <Container maxWidth="md" classes={{ root: 'Banner' }}>
+            <Typography align={'center'} variant={'h1'} style={{ color: "#000000" }}>
+                4Pears
+            </Typography>
+            <Container maxWidth="md" classes={{ root: 'Banner' }} className={classes.bannerText}>
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                 industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
                 pavi is gay scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing

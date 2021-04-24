@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import Footer from "./components/Footer";
 import ProjectList from "./components/ProjectList"
+import { Container } from '@material-ui/core'
 
 
 function App() {

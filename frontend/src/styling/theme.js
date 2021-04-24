@@ -13,7 +13,7 @@ export const theme = createMuiTheme({
             main: '#f44336',
             dark: '#ba000d',
             contrastText: '#000',
-        },
+        }
     },
     typography: {
         title: {
@@ -28,6 +28,9 @@ export const theme = createMuiTheme({
             fontFamily: "Taviraj",
             fontSize: 12
         }
+
+    },
+    overrides: {
 
     }
 });

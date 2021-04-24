@@ -11,11 +11,11 @@ import {theme} from "./styling/theme";
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
-            <ThemeProvider theme={theme}>
-                <Provider store={store}>
+            <Provider store={store}>
+                <ThemeProvider theme={theme}>
                     <App/>
-                </Provider>
-            </ThemeProvider>
+                </ThemeProvider>
+            </Provider>
         </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')

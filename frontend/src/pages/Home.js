@@ -8,9 +8,6 @@ function Home() {
     return (
         <>
             <Container>
-                <Typography align={'center'} variant={'h1'} style={{ color: "#000000" }}>
-                    4Pears
-                </Typography>
                 <Banner />
                 <ProjectPreview/>
                 <ContactForm/>

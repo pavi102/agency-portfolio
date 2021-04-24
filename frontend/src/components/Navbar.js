@@ -1,96 +1,86 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { makeStyles } from "@material-ui/core/styles";
 import '../styling/style.css'
-import {Container, Grid, Card, CardActionArea, CardMedia, CardContent, Typography, Button} from "@material-ui/core";
+import {Link,Typography, Button, AppBar, Toolbar, IconButton} from "@material-ui/core";
 
 function Navbar() {
     const useStyles = makeStyles({
-        NavbarList: {
-            alignContent: 'center'
-            
-        },
-        a:{
 
-        },
         navLink: {
             textDecoration: 'none',
             color: 'black',
             fontSize:'30px',
             paddingBottom:'5px',
             margin:'18px',
-            borderBottom: '1px solid #B78C48',
+            borderBottom: '1px solid',
             '&:hover': {
                 color: "#B78C48",
-                borderBottom:"#B78C48"
+                borderBottom:"1px solid #B78C48",
+                cursor: "pointer"
             }
         },
-        menuText: {
-            
-            display:"inline",
-            textAlign:"center",
+        menus: {
+            justifyContent: "center",
             marginBlockStart: "4px",
             marginBlockEnd: "4px"
-        },
-        navBlock: {
-            textAlign:'center'
-        }   
-            
+        },    
         });
     const classes = useStyles();
     return (
-        <Container maxWidth={"lg"}>
-        <div className={classes.navBlock}>
-                <p className={classes.menuText}>
-                    <a className={classes.navLink}>
-                        Home
-                    </a>
-                </p>
-                <p className={classes.menuText}>
-                    <a className={classes.navLink}>
-                        About
-                    </a>
-                </p>
-                <p className={classes.menuText}>
-                    <a className={classes.navLink}>
-                        Projects
-                    </a>
-                </p>
-                <p className={classes.menuText}>
-                    <a href="/login" className={classes.navLink}>
-                        login
-                    </a>
-                </p>
-                <p className={classes.menuText}>
-                    <a href="/register" className={classes.navLink}>
-                        Register
-                    </a>
-                </p>
-                <p className={classes.menuText}>
-                    <a className={classes.navLink}>
-                        Contact
-                    </a>
-                </p>
-                {/* <li>
-                    <Link to="/">Projects</Link>
-                </li>
-                <li>
-                    <Link to="/">About</Link>
-                </li>
-                <li>
-                    <Link to="/register">Register</Link>
-                </li>
-                <li>
-                    <Link to="/login">Login</Link>
-                    
-                </li>
-                <li>
-                    <Link to="/">Contact</Link>
-                </li> */}
-        </div>
+        <AppBar position="static" color="transparent" elevation={0}>
+            <Toolbar className={classes.menus}>
+                <Typography className={classes.navLink} onClick={()=>window.location.href="/projects"}>
+                    Home
+                </Typography>
+                <Typography className={classes.navLink} onClick={()=>window.location.href="/projects"}>
+                    Projects
+                </Typography>
+                <Typography  className={classes.navLink} onClick={()=>window.location.href="/projects"}>
+                    About
+                </Typography>
+                <Typography className={classes.navLink} onClick={()=>window.location.href="/projects"}>
+                    Home
+                </Typography>
+            </Toolbar>
+            
+
+        </AppBar>
+        // <Container maxWidth={"lg"}>
+        // <div className={classes.navBlock}>
+        //         <p className={classes.menuText}>
+        //             <a className={classes.navLink}>
+        //                 Home
+        //             </a>
+        //         </p>
+        //         <p className={classes.menuText}>
+        //             <a className={classes.navLink}>
+        //                 About
+        //             </a>
+        //         </p>
+        //         <p className={classes.menuText}>
+        //             <a className={classes.navLink}>
+        //                 Projects
+        //             </a>
+        //         </p>
+        //         <p className={classes.menuText}>
+        //             <a href="/login" className={classes.navLink}>
+        //                 login
+        //             </a>
+        //         </p>
+        //         <p className={classes.menuText}>
+        //             <a href="/register" className={classes.navLink}>
+        //                 Register
+        //             </a>
+        //         </p>
+        //         <p className={classes.menuText}>
+        //             <a className={classes.navLink}>
+        //                 Contact
+        //             </a>
+        //         </p>
+        // </div>
 
 
-        </Container>
+        // </Container>
 
         
     )
